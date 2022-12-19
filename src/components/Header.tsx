@@ -1,14 +1,19 @@
 import React from 'react'
+import { Link} from 'react-router-dom';
+import App from '../App';
 
 const Header = () => {
   return (
+    <>
     <header>
     <ul>
-      <li><a href="#">Income</a></li>
-      <li><a href="#">Expense</a></li>
-      <li><a href="#">Savings</a></li>
+      <li><Link to="/">Income</Link></li>
+      <li><Link to="/Expense">Expense</Link></li>
+      <li><a href="/Savings">Sav.Target</a></li>
     </ul>
    </header>
+   <App/>
+    </>
   )
 }
 
