@@ -4,6 +4,7 @@ import Income from './bankcomponents/Income';
 import Expense from './bankcomponents/Expense';
 import Savings from './bankcomponents/Savings';
 import Transaction from './bankcomponents/Transaction';
+import Header from './bankcomponents/Header';
 
 const Main = () => {
     const [displayComponent, setDisplayComponent] = useState("Income");
@@ -32,31 +33,12 @@ const Main = () => {
       }
      
     },[dataArrexpense,dataArr,formDataSavings])
-    const changeState = (
-        option: string,
-        e: React.MouseEvent<HTMLLIElement, MouseEvent>
-      ) => {
-        setDisplayComponent(option);
-      };
+  
 
   return (
     <>
-      <header>
-    <ul className="main-header">
-      <li onClick={(e) => changeState("Income", e)}>
-        <a href="#">Income</a>
-      </li>
-      <li onClick={(e) => changeState("Expense", e)}>
-        <a href="#">Expense</a>
-      </li>
-      <li onClick={(e) => changeState("Savings", e)}>
-        <a href="#">Sav.Target</a>
-      </li>
-      <li onClick={(e) => changeState("Transaction", e)}>
-        <a href="#">Transaction</a>
-      </li>
-    </ul>
-  </header>
+    <Header setDisplayComponent={setDisplayComponent}/>
+ 
     {displayComponent === "Income" && <Income formDataincome={formDataincome} setFormData={setFormData} setDataArr={setDataArr} dataArr={dataArr}/>}
     {displayComponent === "Expense" && <Expense formDataexpense={formDataexpense} setFormDataexpense={setFormDataexpense} setDataArrexpense={setDataArrexpense} dataArrexpense={dataArrexpense} dataArr={dataArr}/>}
     {displayComponent === "Savings" && (<Savings dataArrexpense={dataArrexpense} dataArr={dataArr} formDataSavings={formDataSavings} setFormDataSavings = {setFormDataSavings}/>)}
@@ -89,6 +71,11 @@ const Main = () => {
       <div className="main-display main-span">
         <span>Disposal Account :</span>
         <span>{actualbalance}</span>
+      </div>
+
+      <div className="main-display main-span">
+        <span>Progress so far:</span>
+        <span><progress id="file" value={formtransaction} max={formDataSavings}> {formtransaction}</progress></span>
       </div>
     </>
   )
