@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { formDataexpense,formDataincome,formDataSavings } from '../components/Common';
 
-const Transaction = ({formtransaction,formDataSavings,setFormtransaction,dataArrexpense,dataArr,actualbalance,setActualbalance,setBalance,balance}:{formtransaction:string,formDataSavings:string,setFormtransaction: React.Dispatch<React.SetStateAction<string>>,dataArrexpense:formDataexpense[],dataArr: formDataincome[],actualbalance:number,setActualbalance:React.Dispatch<React.SetStateAction<number>>,setBalance:React.Dispatch<React.SetStateAction<number>>,balance:number}) => {
+const Transaction = ({formtransaction,formDataSavings,setFormtransaction,dataArrexpense,dataArr,actualbalance,setActualbalance,setBalance,balance}:{formtransaction:number,formDataSavings:string,setFormtransaction: React.Dispatch<React.SetStateAction<number>>,dataArrexpense:formDataexpense[],dataArr: formDataincome[],actualbalance:number,setActualbalance:React.Dispatch<React.SetStateAction<number>>,setBalance:React.Dispatch<React.SetStateAction<number>>,balance:number}) => {
     let transact:number =0;
     let newTransact:number = 0;
     let actual_arr = [0];
@@ -11,16 +11,16 @@ const Transaction = ({formtransaction,formDataSavings,setFormtransaction,dataArr
     const submitData = (evt: React.MouseEvent<HTMLButtonElement>) => {
       evt.persist();
   
-    if((Number(formtransaction) < Number(formDataSavings))) {
-      newTransact=Number(formtransaction)
-      transact+=newTransact;
+    if((Number(formtransaction) < Number(formDataSavings)) && (balance-Number(formDataSavings))) {
+      setFormtransaction((prevVal) => (prevVal)+Number(formtransaction))
+     setBalance(balance-Number(formtransaction))
     }else{
       throw new Error("Cannot Transfer more than the available balance and set Savings has alaredy moved.")
     }
 }
 const handlesubmit  = (e:React.ChangeEvent<HTMLInputElement>) => {
   e.preventDefault();
-  setFormtransaction(e.target.value) 
+  setFormtransaction(parseInt(e.target.value)) 
 }
 return (
   <>

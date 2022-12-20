@@ -15,9 +15,7 @@ const Main = () => {
     const [formDataSavings,setFormDataSavings] = useState("");
     const [balance,setBalance] = useState(0);
     const [actualbalance,setActualbalance] = useState(0);
-    const [formtransaction,setFormtransaction] = useState("");
-
-    const [cummdata,setcummData] = useState(0)
+    const [formtransaction,setFormtransaction] = useState(0);
 
     useEffect(()=>{
 
