@@ -1,12 +1,14 @@
 import React,{useState} from 'react'
 import { IncomeProp } from '../components/Common';
+import uuid4 from 'uuid4';
 
 const Income = ({formDataincome,setFormData,setDataArr,dataArr}:IncomeProp) => {
     const submitData = (evt: React.MouseEvent<HTMLButtonElement>) => {
         evt.persist();
         if(!(formDataincome.incomesource === "" || formDataincome.income === ""|| formDataincome.incomedate === "")){
+          formDataincome.incomeid=uuid4();
             setDataArr([...dataArr,formDataincome]);
-            setFormData({incomesource:"",income:"",incomedate:""});
+            setFormData({incomeid:"",incomesource:"",income:"",incomedate:""});
         }
       }
 
