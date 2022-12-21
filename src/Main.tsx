@@ -7,6 +7,7 @@ import Savings from "./bankcomponents/Savings";
 import Transaction from "./bankcomponents/Transaction";
 import Header from "./bankcomponents/Header";
 import Display from "./components/Display";
+import ComponentDisplay from "./components/ComponentDisplay";
 
 const Main = () => {
   const [displayComponent, setDisplayComponent] = useState("Income");
@@ -46,6 +47,7 @@ const Main = () => {
   return (
     <>
       <Header setDisplayComponent={setDisplayComponent} />
+      {/* displaying component based on the component clicked */}
       {displayComponent === "Income" && (
         <Income
           formDataincome={formDataincome}
@@ -89,20 +91,9 @@ const Main = () => {
           ))}
         </ul>
       </div>
-      <div className="main-display main-span">
-        <span>Savings Target :</span>
-        <span>{formDataSavings}</span>
-      </div>
-      <div className="main-display main-span">
-        <span>Balance :</span>
-        <span>{balance}</span>
-      </div>
-      <div className="main-display main-span">
-        <span>Disposal Account :</span>
-        <span>{actualbalance}</span>
-      </div>
-
-
+      <ComponentDisplay title="Savings Target:" data={formDataSavings} />
+      <ComponentDisplay title="Balance:" data={balance} />
+      <ComponentDisplay title="Disposal Account:" data={actualbalance} />
     </>
   );
 };
