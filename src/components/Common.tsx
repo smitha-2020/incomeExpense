@@ -4,7 +4,7 @@ export interface Common {
   title: { title: string };
 }
 export type formDataincome = {
-  incomeid:string,
+  incomeid: string,
   incomesource: number | string;
   income?: number | string;
   incomedate?: string;
@@ -13,7 +13,7 @@ export type FormDataincomeArr = {
   data: formDataincome[];
 };
 export type formDataexpense = {
-  expenseid:string,
+  expenseid: string,
   expensesource: number | string | readonly string[];
   expense?: number | string;
   expensedate?: string;
@@ -50,6 +50,6 @@ export type ITransProp = {
   formDataSavings: string;
   setBalance: React.Dispatch<React.SetStateAction<number>>;
   balance: number;
-  actualbalance:number
+  actualbalance: number
 };
 

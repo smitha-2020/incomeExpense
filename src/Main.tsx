@@ -11,14 +11,14 @@ import Display from "./components/Display";
 const Main = () => {
   const [displayComponent, setDisplayComponent] = useState("Income");
   const [formDataincome, setFormData] = useState<formDataincome>({
-    incomeid:"",
+    incomeid: "",
     incomesource: "",
     income: "",
     incomedate: "",
   });
   const [dataArr, setDataArr] = useState<formDataincome[]>([]);
   const [formDataexpense, setFormDataexpense] = useState<formDataexpense>({
-    expenseid:"",
+    expenseid: "",
     expensesource: "",
     expense: "",
     expensedate: "",
@@ -80,10 +80,9 @@ const Main = () => {
         />
       )}
       <div className="main-display">
-        <Display dataArr={dataArr}/>
-       
+        <Display dataArr={dataArr} />
         <ul className="main-display-data">
-          {dataArrexpense.map(({ expenseid,expensesource, expense, expensedate }) => (
+          {dataArrexpense.map(({ expenseid, expensesource, expense, expensedate }) => (
             <li key={expenseid}>
               {expensesource}:{expense}:{expensedate}
             </li>
@@ -103,7 +102,7 @@ const Main = () => {
         <span>{actualbalance}</span>
       </div>
 
-    
+
     </>
   );
 };
