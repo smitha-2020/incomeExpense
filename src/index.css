@@ -22,6 +22,10 @@ body {
   justify-content: center;
   color: darkslategray;
 }
+select{
+  font-weight: bold;
+  font-size: 10px;
+}
 /* common styles */
 ul li {
   list-style-type: none;

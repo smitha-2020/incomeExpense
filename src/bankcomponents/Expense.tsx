@@ -37,19 +37,25 @@ const Expense = ({
       throw new Error("You do not have sufficient Income");
     }
   };
+  const selectSubmit = (field: string, evt: React.ChangeEvent<HTMLSelectElement>) => {
+    evt.preventDefault();
+    setFormDataexpense((prevVal) => ({ ...prevVal, [field]: evt.target.value }));
+  }
   return (
     <>
       <section className="main-section">
         <div className="main-section-div">
           <h5>Add Expense</h5>
-          <p>
-            <span>Expense Source</span>
-            <input
-              type="text"
-              name="incomesource"
-              onChange={(e) => handlesubmit("expensesource", e)}
-              value={formDataexpense.expensesource}
-            ></input>
+          <p> <span>Income Source</span>
+          <select onChange={(evt) => selectSubmit('expensesource', evt)} name="incomesource" value={formDataexpense.expensesource}>
+            <option value="select">select expense source</option>
+            <option value="rent">House Rent</option>
+            <option value="fees">Schools Fees</option>
+            <option value="grocery">Grocery</option>
+            <option value="shopping">Shopping</option>
+            <option value="restaurent">Restaurent</option>
+            <option value="other">Other</option>
+          </select>
           </p>
           <p>
             <span>Expense Amount</span>
