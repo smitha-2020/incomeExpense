@@ -18,6 +18,7 @@ const Expense = ({
   };
   const submitData = (evt: React.MouseEvent<HTMLButtonElement>) => {
     evt.persist();
+    const dataArrExpenesum = dataArrexpense.reduce((acc, curr) => { return (Number(acc) + Number(curr.expense)) }, 0);
     const dataArrIncomesum = dataArr.reduce((acc, curr) => {
       return Number(acc) + Number(curr.income);
     }, 0);
@@ -28,7 +29,7 @@ const Expense = ({
         formDataexpense.expensedate === ""
       ) &&
       dataArrIncomesum > 0 &&
-      dataArrIncomesum - Number(formDataexpense.expense) > 0
+      dataArrIncomesum - (dataArrExpenesum+Number(formDataexpense.expense)) >= 0
     ) {
       formDataexpense.expenseid = uuid4();
       setDataArrexpense([...dataArrexpense, formDataexpense]);

@@ -50,6 +50,5 @@ export type ITransProp = {
   formDataSavings: string;
   setBalance: React.Dispatch<React.SetStateAction<number>>;
   balance: number;
-  actualbalance: number
 };
 

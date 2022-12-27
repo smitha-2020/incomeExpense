@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 import { formDataincome, formDataexpense } from "./components/Common";
 import Income from "./bankcomponents/Income";
@@ -27,7 +28,7 @@ const Main = () => {
   const [dataArrexpense, setDataArrexpense] = useState<formDataexpense[]>([]);
   const [formDataSavings, setFormDataSavings] = useState("");
   const [balance, setBalance] = useState(0);
-  const [actualbalance, setActualbalance] = useState(0);
+  //const [actualbalance, setActualbalance] = useState(0);
   useEffect(() => {
     const dataArrIncomesum = dataArr.reduce((acc, curr) => {
       return Number(acc) + Number(curr.income);
@@ -38,12 +39,18 @@ const Main = () => {
     const balance = dataArrIncomesum - dataArrExpenesum;
     if (balance - Number(formDataSavings) >= 0) {
       setBalance(dataArrIncomesum - dataArrExpenesum);
-      setActualbalance(balance - Number(formDataSavings));
+      //setActualbalance(balance - Number(formDataSavings));
     }
-    if (balance - Number(formDataSavings) <= 0) {
-      setFormDataSavings("");
-    }
+    // if (balance - Number(formDataSavings) <= 0) {
+    //   setFormDataSavings("");
+    // }
   }, [dataArrexpense, dataArr, formDataSavings]);
+
+  // const deleteItem = (e:React.MouseEvent<SVGElement, MouseEvent>,id:string) => {
+  //   const result = dataArrexpense.filter((val) => {return val.expenseid!==id})
+  //   setDataArrexpense(result)
+  // }
+
   return (
     <>
       <Header setDisplayComponent={setDisplayComponent} />
@@ -78,7 +85,6 @@ const Main = () => {
           formDataSavings={formDataSavings}
           setBalance={setBalance}
           balance={balance}
-          actualbalance={actualbalance}
         />
       )}
       <div className="main-display">
@@ -87,13 +93,14 @@ const Main = () => {
           {dataArrexpense.map(({ expenseid, expensesource, expense, expensedate }) => (
             <li key={expenseid}>
               {expensesource}:{expense}:{expensedate}
+              {/* <FaRegTrashAlt onClick={(e) => deleteItem(e,expenseid)}></FaRegTrashAlt> */}
             </li>
           ))}
         </ul>
       </div>
       <ComponentDisplay title="Savings Target:" data={formDataSavings} />
       <ComponentDisplay title="Balance:" data={balance} />
-      <ComponentDisplay title="Disposal Account:" data={actualbalance} />
+      {/* <ComponentDisplay title="Disposal Account:" data={actualbalance} /> */}
     </>
   );
 };
