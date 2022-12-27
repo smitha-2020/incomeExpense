@@ -11,22 +11,32 @@ saving target.
 3. Users should be able to add new incomes, expenses, transfer from balance account to saving account, and reset saving target. Balance should never be negative number.
 4. Use React Hooks where applicable. TypeScript must be used at least for the props types.
 5. Decide your own styling (The image has no style)
+6. Add function to transfer money back from saving account to current balance.
+7. Set source of incomes and expenses as the select elements with the categories of your choice.
 
-## Bonus point
 
-1. Add function to transfer money back from saving account to current balance.
-2. Set source of incomes and expenses as the select elements with the categories of your choice.
-3. Add edit/delete button and according functions for incomes and expenses.
-4. Use `d3` package to print out 2 piecharts for incomes and expenses in categories.
 
-## References
+└───src
+    │   App.css
+    │   index.css
+    │   index.tsx
+    │   logo.svg
+    │   Main.tsx
+    │   react-app-env.d.ts
+    │   reportWebVitals.ts
+    │   setupTests.ts
+    │
+    ├───bankcomponents
+    │       Expense.tsx
+    │       Header.tsx
+    │       Income.tsx
+    │       Savings.tsx
+    │       Transaction.tsx
+    │
+    ├───components
+    │       Common.tsx
+    │       ComponentDisplay.tsx
+    │       Display.tsx
 
-Be creative with your style!
-
-![demo1](https://github.com/Integrify-Finland/bof-budget-control-app/blob/main/Screenshot%202022-10-10%20at%2017.26.52.png)
----
-
-![demo2](https://github.com/Integrify-Finland/bof-budget-control-app/blob/main/Screenshot%202022-10-10%20at%2017.28.16.png)
----
-
-![demo3](https://github.com/Integrify-Finland/bof-budget-control-app/blob/main/Screenshot%202022-10-10%20at%2017.44.06.png)
+Deployed website:
+    https://magical-churros-cc0164.netlify.app/
