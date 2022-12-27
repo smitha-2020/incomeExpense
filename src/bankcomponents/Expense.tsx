@@ -9,6 +9,8 @@ const Expense = ({
   dataArrexpense,
   dataArr,
 }: ExpenseProps) => {
+
+  const arrExpenseSource = ["", "rent", "fees", "grocery", "shopping", "restaurent", "other"]
   const handlesubmit = (
     field: string,
     e: React.ChangeEvent<HTMLInputElement>
@@ -29,11 +31,11 @@ const Expense = ({
         formDataexpense.expensedate === ""
       ) &&
       dataArrIncomesum > 0 &&
-      dataArrIncomesum - (dataArrExpenesum+Number(formDataexpense.expense)) >= 0
+      dataArrIncomesum - (dataArrExpenesum + Number(formDataexpense.expense)) >= 0
     ) {
       formDataexpense.expenseid = uuid4();
       setDataArrexpense([...dataArrexpense, formDataexpense]);
-      setFormDataexpense({ expenseid:"",expensesource: "", expense: "", expensedate: "" });
+      setFormDataexpense({ expenseid: "", expensesource: "", expense: "", expensedate: "" });
     } else {
       throw new Error("You do not have sufficient Income");
     }
@@ -47,16 +49,11 @@ const Expense = ({
       <section className="main-section">
         <div className="main-section-div">
           <h5>Add Expense</h5>
-          <p> <span>Income Source</span>
-          <select onChange={(evt) => selectSubmit('expensesource', evt)} name="incomesource" value={formDataexpense.expensesource}>
-            <option value="select">select expense source</option>
-            <option value="rent">House Rent</option>
-            <option value="fees">Schools Fees</option>
-            <option value="grocery">Grocery</option>
-            <option value="shopping">Shopping</option>
-            <option value="restaurent">Restaurent</option>
-            <option value="other">Other</option>
-          </select>
+          <p><span>Income Source</span>
+            <select onChange={(evt) => selectSubmit('expensesource', evt)} name="incomesource" value={formDataexpense.expensesource}>
+              {arrExpenseSource.map((src) => <option value={src}>{src}</option>)}
+
+            </select>
           </p>
           <p>
             <span>Expense Amount</span>

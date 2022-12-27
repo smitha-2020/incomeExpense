@@ -3,6 +3,7 @@ import { IncomeProp } from '../components/Common';
 import uuid4 from 'uuid4';
 
 const Income = ({ formDataincome, setFormData, setDataArr, dataArr }: IncomeProp) => {
+  const arrIncomeSource = ["","salary","shares","rent","overtime","other"]
   const submitData = (evt: React.MouseEvent<HTMLButtonElement>) => {
     evt.persist();
     if (!(formDataincome.incomesource === "" || formDataincome.income === "" || formDataincome.incomedate === "")) {
@@ -26,12 +27,9 @@ const Income = ({ formDataincome, setFormData, setDataArr, dataArr }: IncomeProp
           <h5>Add Income</h5>
           <p> <span>Income Source</span>
             <select onChange={(evt) => selectSubmit('incomesource', evt)} name="incomesource" value={formDataincome.incomesource}>
-              <option value="select">select income source</option>
-              <option value="salary">Salary</option>
-              <option value="shares">Shares</option>
-              <option value="rent">Rent for other property</option>
-              <option value="overtime">Overtime</option>
-              <option value="other">Other</option>
+              {
+                 arrIncomeSource.map((source) => <option value={source}>{source}</option>)
+              }
             </select>
           </p>
           <p> <span>Income Amount</span> <input type="text" name="income" onChange={(e) => handlesubmit('income', e)} value={formDataincome.income}></input></p>
