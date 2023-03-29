@@ -1,8 +1,5 @@
-# Getting Started with React functional Components & React Hooks
 
-This assignment requires also TypeScript when passing props to React Components
-
-## Requirements
+## Tools and Functionalities Implemented
 
 1. Created a simple one-page application to store incomes and expenses, and set
 saving target.
